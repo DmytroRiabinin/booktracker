@@ -1,0 +1,694 @@
+{
+  "version": "2.6",
+  "children": [
+
+    {
+      "type": "frame",
+      "id": "catalog-screen",
+      "x": 0,
+      "y": 0,
+      "name": "📖 Catalog Page",
+      "width": 1440,
+      "fill": "#F8F7F4",
+      "layout": "vertical",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "catalog-navbar",
+          "name": "Navbar",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" },
+          "padding": [16, 40],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "cat-logo",
+              "fill": "#1E293B",
+              "content": "📚 BookTracker",
+              "fontFamily": "Inter",
+              "fontSize": 22,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "cat-nav-links",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                { "type": "text", "id": "cat-nav-1", "fill": "#3B5BDB", "content": "Catalog", "fontFamily": "Inter", "fontSize": 15, "fontWeight": "600" },
+                { "type": "text", "id": "cat-nav-2", "fill": "#64748B", "content": "Dashboard", "fontFamily": "Inter", "fontSize": 15, "fontWeight": "400" }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "cat-user",
+              "fill": "#3B5BDB",
+              "cornerRadius": 999,
+              "width": 36,
+              "height": 36,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                { "type": "text", "id": "cat-avatar", "fill": "#FFFFFF", "content": "DR", "fontFamily": "Inter", "fontSize": 13, "fontWeight": "600" }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "catalog-body",
+          "name": "Body",
+          "width": "fill_container",
+          "padding": [32, 40],
+          "gap": 32,
+          "alignItems": "start",
+          "children": [
+            {
+              "type": "frame",
+              "id": "sidebar",
+              "name": "Sidebar / Filters",
+              "width": 240,
+              "fill": "#FFFFFF",
+              "cornerRadius": 12,
+              "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" },
+              "padding": [24, 20],
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "sidebar-title",
+                  "fill": "#1E293B",
+                  "content": "Filters",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "filter-status",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    { "type": "text", "id": "fs-label", "fill": "#64748B", "content": "Reading Status", "fontFamily": "Inter", "fontSize": 12, "fontWeight": "600" },
+                    {
+                      "type": "frame", "id": "fs-planned", "gap": 8, "alignItems": "center",
+                      "children": [
+                        { "type": "rectangle", "id": "cb1", "width": 16, "height": 16, "cornerRadius": 4, "fill": "#F1F5F9", "stroke": { "align": "inside", "thickness": 1.5, "fill": "#94A3B8" } },
+                        { "type": "text", "id": "fs-p-text", "fill": "#374151", "content": "Planned", "fontFamily": "Inter", "fontSize": 14 }
+                      ]
+                    },
+                    {
+                      "type": "frame", "id": "fs-reading", "gap": 8, "alignItems": "center",
+                      "children": [
+                        { "type": "rectangle", "id": "cb2", "width": 16, "height": 16, "cornerRadius": 4, "fill": "#3B5BDB", "stroke": { "align": "inside", "thickness": 1.5, "fill": "#3B5BDB" } },
+                        { "type": "text", "id": "fs-r-text", "fill": "#374151", "content": "Reading", "fontFamily": "Inter", "fontSize": 14 }
+                      ]
+                    },
+                    {
+                      "type": "frame", "id": "fs-completed", "gap": 8, "alignItems": "center",
+                      "children": [
+                        { "type": "rectangle", "id": "cb3", "width": 16, "height": 16, "cornerRadius": 4, "fill": "#3B5BDB", "stroke": { "align": "inside", "thickness": 1.5, "fill": "#3B5BDB" } },
+                        { "type": "text", "id": "fs-c-text", "fill": "#374151", "content": "Completed", "fontFamily": "Inter", "fontSize": 14 }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame", "id": "filter-rating", "layout": "vertical", "gap": 10,
+                  "children": [
+                    { "type": "text", "id": "fr-label", "fill": "#64748B", "content": "Min Rating", "fontFamily": "Inter", "fontSize": 12, "fontWeight": "600" },
+                    { "type": "rectangle", "id": "fr-track", "width": 200, "height": 4, "cornerRadius": 2, "fill": "#E5E7EB" },
+                    { "type": "rectangle", "id": "fr-fill", "width": 120, "height": 4, "cornerRadius": 2, "fill": "#3B5BDB" },
+                    { "type": "text", "id": "fr-value", "fill": "#64748B", "content": "★ 3 and above", "fontFamily": "Inter", "fontSize": 12 }
+                  ]
+                },
+                {
+                  "type": "frame", "id": "filter-fav", "layout": "vertical", "gap": 10,
+                  "children": [
+                    { "type": "text", "id": "ff-label", "fill": "#64748B", "content": "Favorites", "fontFamily": "Inter", "fontSize": 12, "fontWeight": "600" },
+                    {
+                      "type": "frame", "id": "ff-toggle", "gap": 8, "alignItems": "center",
+                      "children": [
+                        { "type": "rectangle", "id": "ff-cb", "width": 16, "height": 16, "cornerRadius": 4, "fill": "#F1F5F9", "stroke": { "align": "inside", "thickness": 1.5, "fill": "#94A3B8" } },
+                        { "type": "text", "id": "ff-text", "fill": "#374151", "content": "⭐ Show favorites only", "fontFamily": "Inter", "fontSize": 14 }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame", "id": "filter-apply-btn",
+                  "fill": "#3B5BDB", "cornerRadius": 8, "padding": [10, 20],
+                  "justifyContent": "center", "alignItems": "center",
+                  "children": [
+                    { "type": "text", "id": "fab-text", "fill": "#FFFFFF", "content": "Apply Filters", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "600" }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "catalog-main",
+              "name": "Main Content",
+              "layout": "vertical",
+              "gap": 24,
+              "width": 1100,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "search-row",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame", "id": "search-input", "width": 480, "height": 44,
+                      "fill": "#FFFFFF", "cornerRadius": 8, "stroke": { "align": "inside", "thickness": 1.5, "fill": "#E5E7EB" },
+                      "padding": [0, 16], "alignItems": "center", "gap": 8,
+                      "children": [
+                        { "type": "text", "id": "search-icon", "fill": "#94A3B8", "content": "🔎", "fontFamily": "Inter", "fontSize": 16 },
+                        { "type": "text", "id": "search-placeholder", "fill": "#94A3B8", "content": "Search by title or author…", "fontFamily": "Inter", "fontSize": 14 }
+                      ]
+                    },
+                    {
+                      "type": "frame", "id": "search-btn", "height": 44,
+                      "fill": "#3B5BDB", "cornerRadius": 8, "padding": [0, 24], "alignItems": "center", "justifyContent": "center",
+                      "children": [
+                        { "type": "text", "id": "sb-text", "fill": "#FFFFFF", "content": "Search", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "600" }
+                      ]
+                    },
+                    {
+                      "type": "text", "id": "results-count",
+                      "fill": "#64748B", "content": "72 books found", "fontFamily": "Inter", "fontSize": 13
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "books-grid",
+                  "name": "Book Cards Grid",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame", "id": "book-1", "name": "Book Card",
+                      "width": 220, "layout": "vertical", "gap": 0,
+                      "fill": "#FFFFFF", "cornerRadius": 12, "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" },
+                      "children": [
+                        {
+                          "type": "frame", "id": "b1-cover", "width": "fill_container", "height": 160,
+                          "fill": "#DBEAFE", "cornerRadius": 12, "justifyContent": "center", "alignItems": "center",
+                          "children": [
+                            { "type": "text", "id": "b1-emoji", "content": "📘", "fontFamily": "Inter", "fontSize": 64 }
+                          ]
+                        },
+                        {
+                          "type": "frame", "id": "b1-info", "layout": "vertical", "gap": 6, "padding": [14, 14],
+                          "children": [
+                            { "type": "text", "id": "b1-title", "fill": "#1E293B", "content": "The Pragmatic\nProgrammer", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "700", "lineHeight": 1.4 },
+                            { "type": "text", "id": "b1-author", "fill": "#64748B", "content": "Hunt & Thomas", "fontFamily": "Inter", "fontSize": 12 },
+                            { "type": "text", "id": "b1-stars", "fill": "#F59E0B", "content": "★★★★☆  4.2", "fontFamily": "Inter", "fontSize": 12 },
+                            {
+                              "type": "frame", "id": "b1-badge", "cornerRadius": 999, "fill": "#DCFCE7", "padding": [3, 10], "alignItems": "center",
+                              "children": [
+                                { "type": "text", "id": "b1-bt", "fill": "#166534", "content": "Reading", "fontFamily": "Inter", "fontSize": 11, "fontWeight": "600" }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame", "id": "book-2", "name": "Book Card",
+                      "width": 220, "layout": "vertical", "gap": 0,
+                      "fill": "#FFFFFF", "cornerRadius": 12, "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" },
+                      "children": [
+                        {
+                          "type": "frame", "id": "b2-cover", "width": "fill_container", "height": 160,
+                          "fill": "#DCFCE7", "cornerRadius": 12, "justifyContent": "center", "alignItems": "center",
+                          "children": [
+                            { "type": "text", "id": "b2-emoji", "content": "📗", "fontFamily": "Inter", "fontSize": 64 }
+                          ]
+                        },
+                        {
+                          "type": "frame", "id": "b2-info", "layout": "vertical", "gap": 6, "padding": [14, 14],
+                          "children": [
+                            { "type": "text", "id": "b2-title", "fill": "#1E293B", "content": "Clean Code", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "700", "lineHeight": 1.4 },
+                            { "type": "text", "id": "b2-author", "fill": "#64748B", "content": "Robert C. Martin", "fontFamily": "Inter", "fontSize": 12 },
+                            { "type": "text", "id": "b2-stars", "fill": "#F59E0B", "content": "★★★★★  4.8", "fontFamily": "Inter", "fontSize": 12 },
+                            {
+                              "type": "frame", "id": "b2-badge", "cornerRadius": 999, "fill": "#EDE9FE", "padding": [3, 10], "alignItems": "center",
+                              "children": [
+                                { "type": "text", "id": "b2-bt", "fill": "#5B21B6", "content": "Completed", "fontFamily": "Inter", "fontSize": 11, "fontWeight": "600" }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame", "id": "book-3", "name": "Book Card",
+                      "width": 220, "layout": "vertical", "gap": 0,
+                      "fill": "#FFFFFF", "cornerRadius": 12, "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" },
+                      "children": [
+                        {
+                          "type": "frame", "id": "b3-cover", "width": "fill_container", "height": 160,
+                          "fill": "#FEF3C7", "cornerRadius": 12, "justifyContent": "center", "alignItems": "center",
+                          "children": [
+                            { "type": "text", "id": "b3-emoji", "content": "📙", "fontFamily": "Inter", "fontSize": 64 }
+                          ]
+                        },
+                        {
+                          "type": "frame", "id": "b3-info", "layout": "vertical", "gap": 6, "padding": [14, 14],
+                          "children": [
+                            { "type": "text", "id": "b3-title", "fill": "#1E293B", "content": "You Don't Know JS", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "700", "lineHeight": 1.4 },
+                            { "type": "text", "id": "b3-author", "fill": "#64748B", "content": "Kyle Simpson", "fontFamily": "Inter", "fontSize": 12 },
+                            { "type": "text", "id": "b3-stars", "fill": "#F59E0B", "content": "★★★★☆  4.6", "fontFamily": "Inter", "fontSize": 12 },
+                            {
+                              "type": "frame", "id": "b3-badge", "cornerRadius": 999, "fill": "#FEF9C3", "padding": [3, 10], "alignItems": "center",
+                              "children": [
+                                { "type": "text", "id": "b3-bt", "fill": "#713F12", "content": "Planned", "fontFamily": "Inter", "fontSize": 11, "fontWeight": "600" }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame", "id": "book-4", "name": "Book Card",
+                      "width": 220, "layout": "vertical", "gap": 0,
+                      "fill": "#FFFFFF", "cornerRadius": 12, "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" },
+                      "children": [
+                        {
+                          "type": "frame", "id": "b4-cover", "width": "fill_container", "height": 160,
+                          "fill": "#FCE7F3", "cornerRadius": 12, "justifyContent": "center", "alignItems": "center",
+                          "children": [
+                            { "type": "text", "id": "b4-emoji", "content": "📕", "fontFamily": "Inter", "fontSize": 64 }
+                          ]
+                        },
+                        {
+                          "type": "frame", "id": "b4-info", "layout": "vertical", "gap": 6, "padding": [14, 14],
+                          "children": [
+                            { "type": "text", "id": "b4-title", "fill": "#1E293B", "content": "Design Patterns", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "700", "lineHeight": 1.4 },
+                            { "type": "text", "id": "b4-author", "fill": "#64748B", "content": "Gang of Four", "fontFamily": "Inter", "fontSize": 12 },
+                            { "type": "text", "id": "b4-stars", "fill": "#F59E0B", "content": "★★★★☆  4.5", "fontFamily": "Inter", "fontSize": 12 },
+                            {
+                              "type": "frame", "id": "b4-badge", "cornerRadius": 999, "fill": "#FEF9C3", "padding": [3, 10], "alignItems": "center",
+                              "children": [
+                                { "type": "text", "id": "b4-bt", "fill": "#713F12", "content": "Planned", "fontFamily": "Inter", "fontSize": 11, "fontWeight": "600" }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame", "id": "pagination", "gap": 8, "alignItems": "center",
+                  "children": [
+                    { "type": "frame", "id": "pg-prev", "width": 36, "height": 36, "fill": "#FFFFFF", "cornerRadius": 8, "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" }, "justifyContent": "center", "alignItems": "center", "children": [{ "type": "text", "id": "pg-p", "fill": "#64748B", "content": "‹", "fontFamily": "Inter", "fontSize": 18 }] },
+                    { "type": "frame", "id": "pg-1", "width": 36, "height": 36, "fill": "#3B5BDB", "cornerRadius": 8, "justifyContent": "center", "alignItems": "center", "children": [{ "type": "text", "id": "pg-1t", "fill": "#FFFFFF", "content": "1", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "600" }] },
+                    { "type": "frame", "id": "pg-2", "width": 36, "height": 36, "fill": "#FFFFFF", "cornerRadius": 8, "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" }, "justifyContent": "center", "alignItems": "center", "children": [{ "type": "text", "id": "pg-2t", "fill": "#374151", "content": "2", "fontFamily": "Inter", "fontSize": 14 }] },
+                    { "type": "frame", "id": "pg-3", "width": 36, "height": 36, "fill": "#FFFFFF", "cornerRadius": 8, "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" }, "justifyContent": "center", "alignItems": "center", "children": [{ "type": "text", "id": "pg-3t", "fill": "#374151", "content": "3", "fontFamily": "Inter", "fontSize": 14 }] },
+                    { "type": "frame", "id": "pg-next", "width": 36, "height": 36, "fill": "#FFFFFF", "cornerRadius": 8, "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" }, "justifyContent": "center", "alignItems": "center", "children": [{ "type": "text", "id": "pg-n", "fill": "#64748B", "content": "›", "fontFamily": "Inter", "fontSize": 18 }] }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "frame",
+      "id": "detail-screen",
+      "x": 1500,
+      "y": 0,
+      "name": "📗 Book Detail Page",
+      "width": 1440,
+      "fill": "#F8F7F4",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame", "id": "detail-navbar", "name": "Navbar",
+          "width": "fill_container", "fill": "#FFFFFF",
+          "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" },
+          "padding": [16, 40], "justifyContent": "space_between", "alignItems": "center",
+          "children": [
+            { "type": "text", "id": "det-logo", "fill": "#1E293B", "content": "📚 BookTracker", "fontFamily": "Inter", "fontSize": 22, "fontWeight": "700" },
+            { "type": "text", "id": "det-back", "fill": "#3B5BDB", "content": "← Back to Catalog", "fontFamily": "Inter", "fontSize": 14 },
+            { "type": "frame", "id": "det-user", "fill": "#3B5BDB", "cornerRadius": 999, "width": 36, "height": 36, "justifyContent": "center", "alignItems": "center", "children": [{ "type": "text", "id": "det-av", "fill": "#FFFFFF", "content": "DR", "fontFamily": "Inter", "fontSize": 13, "fontWeight": "600" }] }
+          ]
+        },
+        {
+          "type": "frame", "id": "detail-body", "padding": [40, 60], "gap": 48, "alignItems": "start",
+          "children": [
+            {
+              "type": "frame", "id": "detail-left", "layout": "vertical", "gap": 20, "width": 280,
+              "children": [
+                {
+                  "type": "frame", "id": "book-cover-big", "width": 280, "height": 360,
+                  "fill": "#DBEAFE", "cornerRadius": 16,
+                  "justifyContent": "center", "alignItems": "center",
+                  "children": [{ "type": "text", "id": "bcb-e", "content": "📘", "fontFamily": "Inter", "fontSize": 120 }]
+                },
+                {
+                  "type": "frame", "id": "status-selector", "layout": "vertical", "gap": 8, "width": 280,
+                  "children": [
+                    { "type": "text", "id": "ss-label", "fill": "#64748B", "content": "My Reading Status", "fontFamily": "Inter", "fontSize": 12, "fontWeight": "600" },
+                    {
+                      "type": "frame", "id": "ss-dropdown", "width": 280, "height": 44, "fill": "#FFFFFF",
+                      "cornerRadius": 8, "stroke": { "align": "inside", "thickness": 1.5, "fill": "#E5E7EB" },
+                      "padding": [0, 14], "justifyContent": "space_between", "alignItems": "center",
+                      "children": [
+                        { "type": "text", "id": "ss-val", "fill": "#1E293B", "content": "📖 Reading", "fontFamily": "Inter", "fontSize": 14 },
+                        { "type": "text", "id": "ss-arr", "fill": "#94A3B8", "content": "▼", "fontFamily": "Inter", "fontSize": 12 }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame", "id": "rating-widget", "layout": "vertical", "gap": 8, "width": 280,
+                  "children": [
+                    { "type": "text", "id": "rw-label", "fill": "#64748B", "content": "My Rating", "fontFamily": "Inter", "fontSize": 12, "fontWeight": "600" },
+                    { "type": "text", "id": "rw-stars", "fill": "#F59E0B", "content": "★ ★ ★ ★ ☆", "fontFamily": "Inter", "fontSize": 28 },
+                    { "type": "text", "id": "rw-hint", "fill": "#94A3B8", "content": "Tap to rate 1–5", "fontFamily": "Inter", "fontSize": 12 }
+                  ]
+                },
+                {
+                  "type": "frame", "id": "fav-btn", "width": 280, "height": 44,
+                  "fill": "#FFFFFF", "cornerRadius": 8, "stroke": { "align": "inside", "thickness": 1.5, "fill": "#E5E7EB" },
+                  "justifyContent": "center", "alignItems": "center", "gap": 8,
+                  "children": [
+                    { "type": "text", "id": "fav-icon", "fill": "#F59E0B", "content": "♡", "fontFamily": "Inter", "fontSize": 18 },
+                    { "type": "text", "id": "fav-text", "fill": "#374151", "content": "Add to Favorites", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "500" }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame", "id": "detail-right", "layout": "vertical", "gap": 24, "width": 900,
+              "children": [
+                {
+                  "type": "frame", "id": "book-meta", "layout": "vertical", "gap": 12,
+                  "children": [
+                    { "type": "text", "id": "bm-title", "fill": "#1E293B", "content": "The Pragmatic Programmer", "fontFamily": "Inter", "fontSize": 36, "fontWeight": "700", "lineHeight": 1.2 },
+                    { "type": "text", "id": "bm-author", "fill": "#64748B", "content": "by Andrew Hunt & David Thomas  ·  O'Reilly  ·  1999", "fontFamily": "Inter", "fontSize": 15 },
+                    {
+                      "type": "frame", "id": "bm-stats", "gap": 16, "alignItems": "center",
+                      "children": [
+                        { "type": "text", "id": "bm-rating", "fill": "#F59E0B", "content": "★★★★☆  4.2", "fontFamily": "Inter", "fontSize": 15 },
+                        { "type": "text", "id": "bm-reviews", "fill": "#64748B", "content": "(128 reviews)", "fontFamily": "Inter", "fontSize": 13 },
+                        { "type": "frame", "id": "bm-badge", "cornerRadius": 999, "fill": "#F1F5F9", "padding": [4, 12], "alignItems": "center", "children": [{ "type": "text", "id": "bm-bt", "fill": "#374151", "content": "352 pages", "fontFamily": "Inter", "fontSize": 12 }] }
+                      ]
+                    },
+                    { "type": "text", "id": "bm-desc", "fill": "#64748B", "content": "A guide to becoming a better programmer. Covers topics from career development to debugging techniques, spans the full scope of software development…", "fontFamily": "Inter", "fontSize": 15, "lineHeight": 1.7 }
+                  ]
+                },
+                { "type": "rectangle", "id": "divider-1", "width": "fill_container", "height": 1, "fill": "#E5E7EB" },
+                {
+                  "type": "frame", "id": "reviews-section", "layout": "vertical", "gap": 16,
+                  "children": [
+                    { "type": "text", "id": "rev-title", "fill": "#1E293B", "content": "💬 Reviews", "fontFamily": "Inter", "fontSize": 20, "fontWeight": "700" },
+                    {
+                      "type": "frame", "id": "review-1", "layout": "vertical", "gap": 10,
+                      "fill": "#FFFFFF", "cornerRadius": 12, "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" }, "padding": [16, 16],
+                      "children": [
+                        {
+                          "type": "frame", "id": "r1-header", "gap": 12, "alignItems": "center",
+                          "children": [
+                            { "type": "ellipse", "id": "r1-av", "width": 36, "height": 36, "fill": "#DBEAFE" },
+                            { "type": "frame", "id": "r1-name-block", "layout": "vertical", "gap": 2, "children": [
+                              { "type": "text", "id": "r1-name", "fill": "#1E293B", "content": "Alex K.", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "600" },
+                              { "type": "text", "id": "r1-stars", "fill": "#F59E0B", "content": "★★★★★", "fontFamily": "Inter", "fontSize": 12 }
+                            ]},
+                            { "type": "text", "id": "r1-date", "fill": "#94A3B8", "content": "Feb 15, 2026", "fontFamily": "Inter", "fontSize": 12 }
+                          ]
+                        },
+                        { "type": "text", "id": "r1-text", "fill": "#64748B", "content": "Great read, really changed the way I approach programming problems…", "fontFamily": "Inter", "fontSize": 14, "lineHeight": 1.6 }
+                      ]
+                    },
+                    {
+                      "type": "frame", "id": "add-review", "layout": "vertical", "gap": 12,
+                      "fill": "#FFFFFF", "cornerRadius": 12, "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" }, "padding": [16, 16],
+                      "children": [
+                        { "type": "text", "id": "ar-title", "fill": "#1E293B", "content": "✏️ Write a Review", "fontFamily": "Inter", "fontSize": 16, "fontWeight": "600" },
+                        { "type": "rectangle", "id": "ar-textarea", "width": "fill_container", "height": 80, "fill": "#F8FAFC", "cornerRadius": 8, "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" } },
+                        { "type": "frame", "id": "ar-submit", "fill": "#3B5BDB", "cornerRadius": 8, "padding": [10, 24], "alignItems": "center", "justifyContent": "center", "children": [{ "type": "text", "id": "ar-st", "fill": "#FFFFFF", "content": "Submit Review", "fontFamily": "Inter", "fontSize": 14, "fontWeight": "600" }] }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "frame",
+      "id": "auth-screen",
+      "x": 0,
+      "y": 1100,
+      "name": "🔐 Auth Page (Login + Register)",
+      "width": 1440,
+      "height": 800,
+      "fill": "#F0F4FF",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "gap": 32,
+      "children": [
+        {
+          "type": "frame", "id": "login-card", "name": "Login",
+          "width": 440, "layout": "vertical", "gap": 20,
+          "fill": "#FFFFFF", "cornerRadius": 16, "padding": [40, 40],
+          "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" },
+          "children": [
+            { "type": "text", "id": "lc-logo", "fill": "#1E293B", "content": "📚 BookTracker", "fontFamily": "Inter", "fontSize": 20, "fontWeight": "700", "textAlign": "center" },
+            { "type": "text", "id": "lc-title", "fill": "#1E293B", "content": "Welcome back 👋", "fontFamily": "Inter", "fontSize": 26, "fontWeight": "700" },
+            { "type": "text", "id": "lc-sub", "fill": "#64748B", "content": "Sign in to your account", "fontFamily": "Inter", "fontSize": 14 },
+            {
+              "type": "frame", "id": "lc-email-f", "layout": "vertical", "gap": 6,
+              "children": [
+                { "type": "text", "id": "lc-el", "fill": "#374151", "content": "Email address", "fontFamily": "Inter", "fontSize": 13, "fontWeight": "500" },
+                { "type": "frame", "id": "lc-ei", "width": "fill_container", "height": 44, "fill": "#F9FAFB", "cornerRadius": 8, "stroke": { "align": "inside", "thickness": 1.5, "fill": "#E5E7EB" }, "padding": [0, 14], "alignItems": "center", "children": [{ "type": "text", "id": "lc-ep", "fill": "#9CA3AF", "content": "dmytro@example.com", "fontFamily": "Inter", "fontSize": 14 }] }
+              ]
+            },
+            {
+              "type": "frame", "id": "lc-pass-f", "layout": "vertical", "gap": 6,
+              "children": [
+                { "type": "text", "id": "lc-pl", "fill": "#374151", "content": "Password", "fontFamily": "Inter", "fontSize": 13, "fontWeight": "500" },
+                { "type": "frame", "id": "lc-pi", "width": "fill_container", "height": 44, "fill": "#F9FAFB", "cornerRadius": 8, "stroke": { "align": "inside", "thickness": 1.5, "fill": "#E5E7EB" }, "padding": [0, 14], "alignItems": "center", "children": [{ "type": "text", "id": "lc-pp", "fill": "#9CA3AF", "content": "••••••••", "fontFamily": "Inter", "fontSize": 14 }] }
+              ]
+            },
+            { "type": "text", "id": "lc-forgot", "fill": "#3B5BDB", "content": "Forgot password?", "fontFamily": "Inter", "fontSize": 13, "textAlign": "right" },
+            { "type": "frame", "id": "lc-btn", "width": "fill_container", "height": 48, "fill": "#3B5BDB", "cornerRadius": 10, "justifyContent": "center", "alignItems": "center", "children": [{ "type": "text", "id": "lc-bt", "fill": "#FFFFFF", "content": "Sign In", "fontFamily": "Inter", "fontSize": 15, "fontWeight": "600" }] },
+            { "type": "text", "id": "lc-signup", "fill": "#64748B", "content": "Don't have an account?  Sign up →", "fontFamily": "Inter", "fontSize": 13, "textAlign": "center" }
+          ]
+        },
+        {
+          "type": "frame", "id": "register-card", "name": "Register",
+          "width": 440, "layout": "vertical", "gap": 16,
+          "fill": "#FFFFFF", "cornerRadius": 16, "padding": [40, 40],
+          "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" },
+          "children": [
+            { "type": "text", "id": "rc-title", "fill": "#1E293B", "content": "Create account ✨", "fontFamily": "Inter", "fontSize": 26, "fontWeight": "700" },
+            { "type": "text", "id": "rc-sub", "fill": "#64748B", "content": "Start tracking your reading journey", "fontFamily": "Inter", "fontSize": 14 },
+            {
+              "type": "frame", "id": "rc-name-f", "layout": "vertical", "gap": 6,
+              "children": [
+                { "type": "text", "id": "rc-nl", "fill": "#374151", "content": "Full Name", "fontFamily": "Inter", "fontSize": 13, "fontWeight": "500" },
+                { "type": "frame", "id": "rc-ni", "width": "fill_container", "height": 44, "fill": "#F9FAFB", "cornerRadius": 8, "stroke": { "align": "inside", "thickness": 1.5, "fill": "#E5E7EB" }, "padding": [0, 14], "alignItems": "center", "children": [{ "type": "text", "id": "rc-np", "fill": "#9CA3AF", "content": "Dmytro Riabinin", "fontFamily": "Inter", "fontSize": 14 }] }
+              ]
+            },
+            {
+              "type": "frame", "id": "rc-email-f", "layout": "vertical", "gap": 6,
+              "children": [
+                { "type": "text", "id": "rc-el", "fill": "#374151", "content": "Email address", "fontFamily": "Inter", "fontSize": 13, "fontWeight": "500" },
+                { "type": "frame", "id": "rc-ei", "width": "fill_container", "height": 44, "fill": "#F9FAFB", "cornerRadius": 8, "stroke": { "align": "inside", "thickness": 1.5, "fill": "#E5E7EB" }, "padding": [0, 14], "alignItems": "center", "children": [{ "type": "text", "id": "rc-ep", "fill": "#9CA3AF", "content": "dmytro@example.com", "fontFamily": "Inter", "fontSize": 14 }] }
+              ]
+            },
+            {
+              "type": "frame", "id": "rc-pass-f", "layout": "vertical", "gap": 6,
+              "children": [
+                { "type": "text", "id": "rc-pl", "fill": "#374151", "content": "Password", "fontFamily": "Inter", "fontSize": 13, "fontWeight": "500" },
+                { "type": "frame", "id": "rc-pi", "width": "fill_container", "height": 44, "fill": "#F9FAFB", "cornerRadius": 8, "stroke": { "align": "inside", "thickness": 1.5, "fill": "#E5E7EB" }, "padding": [0, 14], "alignItems": "center", "children": [{ "type": "text", "id": "rc-pp", "fill": "#9CA3AF", "content": "min 8 characters", "fontFamily": "Inter", "fontSize": 14 }] }
+              ]
+            },
+            {
+              "type": "frame", "id": "rc-conf-f", "layout": "vertical", "gap": 6,
+              "children": [
+                { "type": "text", "id": "rc-cl", "fill": "#374151", "content": "Confirm Password", "fontFamily": "Inter", "fontSize": 13, "fontWeight": "500" },
+                { "type": "frame", "id": "rc-ci", "width": "fill_container", "height": 44, "fill": "#F9FAFB", "cornerRadius": 8, "stroke": { "align": "inside", "thickness": 1.5, "fill": "#E5E7EB" }, "padding": [0, 14], "alignItems": "center", "children": [{ "type": "text", "id": "rc-cp", "fill": "#9CA3AF", "content": "repeat password", "fontFamily": "Inter", "fontSize": 14 }] }
+              ]
+            },
+            { "type": "frame", "id": "rc-btn", "width": "fill_container", "height": 48, "fill": "#3B5BDB", "cornerRadius": 10, "justifyContent": "center", "alignItems": "center", "children": [{ "type": "text", "id": "rc-bt", "fill": "#FFFFFF", "content": "Create Account", "fontFamily": "Inter", "fontSize": 15, "fontWeight": "600" }] },
+            { "type": "text", "id": "rc-login", "fill": "#64748B", "content": "Already have an account?  Sign in →", "fontFamily": "Inter", "fontSize": 13, "textAlign": "center" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "frame",
+      "id": "dashboard-screen",
+      "x": 1500,
+      "y": 1100,
+      "name": "🏠 User Dashboard",
+      "width": 1440,
+      "fill": "#F8F7F4",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame", "id": "dash-navbar", "name": "Navbar",
+          "width": "fill_container", "fill": "#FFFFFF",
+          "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" },
+          "padding": [16, 40], "justifyContent": "space_between", "alignItems": "center",
+          "children": [
+            { "type": "text", "id": "dash-logo", "fill": "#1E293B", "content": "📚 BookTracker", "fontFamily": "Inter", "fontSize": 22, "fontWeight": "700" },
+            {
+              "type": "frame", "id": "dash-nav", "gap": 32, "alignItems": "center",
+              "children": [
+                { "type": "text", "id": "dn-1", "fill": "#64748B", "content": "Catalog", "fontFamily": "Inter", "fontSize": 15 },
+                { "type": "text", "id": "dn-2", "fill": "#3B5BDB", "content": "Dashboard", "fontFamily": "Inter", "fontSize": 15, "fontWeight": "600" }
+              ]
+            },
+            { "type": "frame", "id": "dash-user", "fill": "#3B5BDB", "cornerRadius": 999, "width": 36, "height": 36, "justifyContent": "center", "alignItems": "center", "children": [{ "type": "text", "id": "du-av", "fill": "#FFFFFF", "content": "DR", "fontFamily": "Inter", "fontSize": 13, "fontWeight": "600" }] }
+          ]
+        },
+        {
+          "type": "frame", "id": "dash-content", "layout": "vertical", "gap": 32, "padding": [40, 60],
+          "children": [
+            { "type": "text", "id": "dash-title", "fill": "#1E293B", "content": "My Reading Lists 📚", "fontFamily": "Inter", "fontSize": 32, "fontWeight": "700" },
+            {
+              "type": "frame", "id": "reading-section", "layout": "vertical", "gap": 12,
+              "children": [
+                {
+                  "type": "frame", "id": "rs-header", "gap": 12, "alignItems": "center",
+                  "children": [
+                    { "type": "text", "id": "rs-emoji", "content": "📖", "fontFamily": "Inter", "fontSize": 22 },
+                    { "type": "text", "id": "rs-name", "fill": "#1E293B", "content": "Currently Reading", "fontFamily": "Inter", "fontSize": 20, "fontWeight": "700" },
+                    { "type": "frame", "id": "rs-count-b", "cornerRadius": 999, "fill": "#DBEAFE", "padding": [3, 12], "alignItems": "center", "children": [{ "type": "text", "id": "rs-count", "fill": "#1D4ED8", "content": "2 books", "fontFamily": "Inter", "fontSize": 12, "fontWeight": "600" }] }
+                  ]
+                },
+                {
+                  "type": "frame", "id": "list-card-1",
+                  "fill": "#FFFFFF", "cornerRadius": 12, "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" },
+                  "padding": [16, 20], "gap": 20, "alignItems": "center",
+                  "children": [
+                    { "type": "frame", "id": "lc1-cover", "width": 52, "height": 68, "fill": "#DBEAFE", "cornerRadius": 6, "justifyContent": "center", "alignItems": "center", "children": [{ "type": "text", "id": "lc1-e", "content": "📘", "fontFamily": "Inter", "fontSize": 28 }] },
+                    {
+                      "type": "frame", "id": "lc1-info", "layout": "vertical", "gap": 4, "width": 400,
+                      "children": [
+                        { "type": "text", "id": "lc1-title", "fill": "#1E293B", "content": "The Pragmatic Programmer", "fontFamily": "Inter", "fontSize": 15, "fontWeight": "700" },
+                        { "type": "text", "id": "lc1-author", "fill": "#64748B", "content": "Hunt & Thomas", "fontFamily": "Inter", "fontSize": 13 },
+                        { "type": "rectangle", "id": "lc1-progress-bg", "width": 300, "height": 6, "cornerRadius": 3, "fill": "#E5E7EB" },
+                        { "type": "rectangle", "id": "lc1-progress-fill", "width": 180, "height": 6, "cornerRadius": 3, "fill": "#3B5BDB" },
+                        { "type": "text", "id": "lc1-pct", "fill": "#64748B", "content": "60% completed", "fontFamily": "Inter", "fontSize": 11 }
+                      ]
+                    },
+                    {
+                      "type": "frame", "id": "lc1-dropdown", "height": 36, "fill": "#F1F5F9", "cornerRadius": 8,
+                      "padding": [0, 14], "gap": 8, "alignItems": "center",
+                      "children": [
+                        { "type": "text", "id": "lc1-status", "fill": "#374151", "content": "📖 Reading", "fontFamily": "Inter", "fontSize": 13 },
+                        { "type": "text", "id": "lc1-arr", "fill": "#94A3B8", "content": "▼", "fontFamily": "Inter", "fontSize": 10 }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame", "id": "list-card-2",
+                  "fill": "#FFFFFF", "cornerRadius": 12, "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" },
+                  "padding": [16, 20], "gap": 20, "alignItems": "center",
+                  "children": [
+                    { "type": "frame", "id": "lc2-cover", "width": 52, "height": 68, "fill": "#FEF3C7", "cornerRadius": 6, "justifyContent": "center", "alignItems": "center", "children": [{ "type": "text", "id": "lc2-e", "content": "📙", "fontFamily": "Inter", "fontSize": 28 }] },
+                    {
+                      "type": "frame", "id": "lc2-info", "layout": "vertical", "gap": 4, "width": 400,
+                      "children": [
+                        { "type": "text", "id": "lc2-title", "fill": "#1E293B", "content": "Node.js Design Patterns", "fontFamily": "Inter", "fontSize": 15, "fontWeight": "700" },
+                        { "type": "text", "id": "lc2-author", "fill": "#64748B", "content": "Casciaro & Mammino", "fontFamily": "Inter", "fontSize": 13 },
+                        { "type": "rectangle", "id": "lc2-progress-bg", "width": 300, "height": 6, "cornerRadius": 3, "fill": "#E5E7EB" },
+                        { "type": "rectangle", "id": "lc2-progress-fill", "width": 75, "height": 6, "cornerRadius": 3, "fill": "#3B5BDB" },
+                        { "type": "text", "id": "lc2-pct", "fill": "#64748B", "content": "25% completed", "fontFamily": "Inter", "fontSize": 11 }
+                      ]
+                    },
+                    {
+                      "type": "frame", "id": "lc2-dropdown", "height": 36, "fill": "#F1F5F9", "cornerRadius": 8,
+                      "padding": [0, 14], "gap": 8, "alignItems": "center",
+                      "children": [
+                        { "type": "text", "id": "lc2-status", "fill": "#374151", "content": "📖 Reading", "fontFamily": "Inter", "fontSize": 13 },
+                        { "type": "text", "id": "lc2-arr", "fill": "#94A3B8", "content": "▼", "fontFamily": "Inter", "fontSize": 10 }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            { "type": "rectangle", "id": "dash-div", "width": "fill_container", "height": 1, "fill": "#E5E7EB" },
+            {
+              "type": "frame", "id": "planned-section", "layout": "vertical", "gap": 12,
+              "children": [
+                {
+                  "type": "frame", "id": "ps-header", "gap": 12, "alignItems": "center",
+                  "children": [
+                    { "type": "text", "id": "ps-emoji", "content": "📋", "fontFamily": "Inter", "fontSize": 22 },
+                    { "type": "text", "id": "ps-name", "fill": "#1E293B", "content": "Planned", "fontFamily": "Inter", "fontSize": 20, "fontWeight": "700" },
+                    { "type": "frame", "id": "ps-count-b", "cornerRadius": 999, "fill": "#FEF9C3", "padding": [3, 12], "alignItems": "center", "children": [{ "type": "text", "id": "ps-count", "fill": "#713F12", "content": "3 books", "fontFamily": "Inter", "fontSize": 12, "fontWeight": "600" }] }
+                  ]
+                },
+                {
+                  "type": "frame", "id": "planned-card-1",
+                  "fill": "#FFFFFF", "cornerRadius": 12, "stroke": { "align": "inside", "thickness": 1, "fill": "#E5E7EB" },
+                  "padding": [16, 20], "gap": 20, "alignItems": "center",
+                  "children": [
+                    { "type": "frame", "id": "pc1-cover", "width": 52, "height": 68, "fill": "#FCE7F3", "cornerRadius": 6, "justifyContent": "center", "alignItems": "center", "children": [{ "type": "text", "id": "pc1-e", "content": "📕", "fontFamily": "Inter", "fontSize": 28 }] },
+                    { "type": "frame", "id": "pc1-info", "layout": "vertical", "gap": 4, "width": 400, "children": [
+                      { "type": "text", "id": "pc1-title", "fill": "#1E293B", "content": "Design Patterns (GoF)", "fontFamily": "Inter", "fontSize": 15, "fontWeight": "700" },
+                      { "type": "text", "id": "pc1-author", "fill": "#64748B", "content": "Gang of Four", "fontFamily": "Inter", "fontSize": 13 }
+                    ]},
+                    { "type": "frame", "id": "pc1-badge", "cornerRadius": 999, "fill": "#FEF9C3", "padding": [4, 14], "alignItems": "center", "children": [{ "type": "text", "id": "pc1-bt", "fill": "#713F12", "content": "Planned", "fontFamily": "Inter", "fontSize": 12, "fontWeight": "600" }] }
+                  ]
+                }
+              ]
+            },
+            { "type": "rectangle", "id": "dash-div2", "width": "fill_container", "height": 1, "fill": "#E5E7EB" },
+            {
+              "type": "frame", "id": "completed-section", "layout": "vertical", "gap": 12,
+              "children": [
+                {
+                  "type": "frame", "id": "cs-header", "gap": 12, "alignItems": "center",
+                  "children": [
+                    { "type": "text", "id": "cs-emoji", "content": "✅", "fontFamily": "Inter", "fontSize": 22 },
+                    { "type": "text", "id": "cs-name", "fill": "#1E293B", "content": "Completed", "fontFamily": "Inter", "fontSize": 20, "fontWeight": "700" },
+                    { "type": "frame", "id": "cs-count-b", "cornerRadius": 999, "fill": "#DCFCE7", "padding": [3, 12], "alignItems": "center", "children": [{ "type": "text", "id": "cs-count", "fill": "#166534", "content": "2 books", "fontFamily": "Inter", "fontSize": 12, "fontWeight": "600" }] }
+                  ]
+                },
+                {
+                  "type": "frame", "id": "comp-card-1",
+                  "fill": "#F0FDF4", "cornerRadius": 12, "stroke": { "align": "inside", "thickness": 1, "fill": "#BBF7D0" },
+                  "padding": [16, 20], "gap": 20, "alignItems": "center",
+                  "children": [
+                    { "type": "frame", "id": "cc1-cover", "width": 52, "height": 68, "fill": "#DCFCE7", "cornerRadius": 6, "justifyContent": "center", "alignItems": "center", "children": [{ "type": "text", "id": "cc1-e", "content": "📗", "fontFamily": "Inter", "fontSize": 28 }] },
+                    { "type": "frame", "id": "cc1-info", "layout": "vertical", "gap": 4, "width": 400, "children": [
+                      { "type": "text", "id": "cc1-title", "fill": "#1E293B", "content": "Clean Code", "fontFamily": "Inter", "fontSize": 15, "fontWeight": "700" },
+                      { "type": "text", "id": "cc1-author", "fill": "#64748B", "content": "Robert C. Martin", "fontFamily": "Inter", "fontSize": 13 },
+                      { "type": "text", "id": "cc1-stars", "fill": "#F59E0B", "content": "★★★★★  My rating: 5/5", "fontFamily": "Inter", "fontSize": 13 }
+                    ]},
+                    { "type": "frame", "id": "cc1-badge", "cornerRadius": 999, "fill": "#DCFCE7", "padding": [4, 14], "alignItems": "center", "children": [{ "type": "text", "id": "cc1-bt", "fill": "#166534", "content": "✓ Completed", "fontFamily": "Inter", "fontSize": 12, "fontWeight": "600" }] }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+
+  ]
+}
