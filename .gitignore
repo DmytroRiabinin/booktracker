@@ -6,8 +6,12 @@ yarn-debug.log*
 yarn-error.log*
 dev-debug.log
 
+# Build output
+dist/
+
 # Dependency directories
 node_modules/
+.pnpm-store/
 
 # Environment variables
 .env
