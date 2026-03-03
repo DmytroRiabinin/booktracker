@@ -40,15 +40,15 @@ export class User {
   @CreateDateColumn({ type: 'timestamp', name: 'created_at' })
   createdAt: Date;
 
-  @OneToMany(() => ReadingStatus, (rs) => rs.user)
+  @OneToMany(() => ReadingStatus, (rs: ReadingStatus) => rs.user)
   readingStatuses: ReadingStatus[];
 
-  @OneToMany(() => Review, (r) => r.user)
+  @OneToMany(() => Review, (r: Review) => r.user)
   reviews: Review[];
 
-  @OneToMany(() => Rating, (r) => r.user)
+  @OneToMany(() => Rating, (r: Rating) => r.user)
   ratings: Rating[];
 
-  @OneToMany(() => Favorite, (f) => f.user)
+  @OneToMany(() => Favorite, (f: Favorite) => f.user)
   favorites: Favorite[];
 }
